@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pop</title>
+</head>
+
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:100,200,300,regular,500,600,700,800,900,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic,900italic);
+    @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+    *,
+    ::after,
+    ::before {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+
+    :root {
+        --primary: #2892F5;
+        --secondary: #F2F4F7;
+    }
+
+    .input-selection {
+        border-radius: 0.3em 0 0 0.3em !important;
+        /* background: red !important; */
+    }
+
+    button {
+        padding: 0.8em 1.8em;
+        font-family: 'poppins';
+        border-radius: 0.5em;
+        cursor: pointer;
+        font-weight: 400;
+        font-size: 1em;
+        text-wrap: nowrap;
+    }
+
+    textarea {
+        resize: none;
+        font-family: 'poppins';
+
+    }
+
+    .italic {
+        font-style: italic !important;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        cursor: default;
+        font-weight: normal;
+    }
+
+    html {
+        font-size: 0.9em;
+        font-family: 'poppins';
+    }
+
+    input {
+        font-family: 'poppins';
+        font-size: 1em;
+        color: #6b6b6b;
+    }
+
+    input:read-only {
+        cursor: pointer;
+    }
+
+    p {
+        cursor: default;
+    }
+
+    body {
+        background: var(--secondary);
+        height: 100%;
+    }
+
+    .section-pop-collocataire {
+        background: #fff;
+        width: max-content;
+        border-radius: 0.5em;
+        outline: 1px solid silver;
+        margin: 1em auto;
+    }
+
+    .col-pop-collocataire {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        width: 35em;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .col-pop-collocataire {
+            min-width: 100%;
+        }
+
+           .section-pop-collocataire {
+      
+        /* margin: 0; */
+        /* margin-inline: 1em; */
+    }
+    }
+
+    .header-pop-collocataire {
+        background: rgba(217, 217, 217, 1);
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0.5em 0.8em;
+    }
+
+    .title-pop-collocataire {
+        font-weight: 700;
+        color: rgba(54, 54, 54, 1);
+        font-size: 1.4em;
+    }
+
+    .row-pic-pop-collocataire {
+        display: flex;
+        align-items: center;
+        gap: 0.8em;
+        flex-direction: row;
+        /* justify-content: space-between; */
+    }
+
+    .row-pic-pop-collocataire i {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        /* justify-content: space-between; */
+    }
+
+    .main-pop-collocataire {
+        /* padding: 0 0.8em; */
+
+    }
+
+    .ul-pop-collocataire {
+        display: flex;
+        flex-direction: column;
+        /* gap: 0.3em; */
+        list-style-type: none;
+    }
+
+
+    .div-list-user-collocataire {
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        flex-direction: row;
+        font-family: 'roboto';
+    }
+
+    .ul-pop-collocataire li {
+        padding: 0.5em 0.8em;
+
+    }
+
+    .ul-pop-collocataire li:hover {
+        background: #eeeeee;
+    }
+
+    .user-name-collocataire {
+        font-size: 1.2em;
+    }
+
+    .user-profile-collocataire {
+        width: 3em;
+        height: 3em;
+        border-radius: 50%;
+        object-fit: contain;
+    }
+
+    .user-name-collocataire strong {
+        font-weight: 800;
+    }
+
+    .span-user-name-collocataire {
+        /* font-size: 1.2em; */
+        color: rgba(88, 88, 86, 1);
+        font-weight: 500;
+    }
+
+    .footer-pop-collocataire {
+        padding: 0.8em 1.2em 0.9em;
+        display: flex;
+        align-items: center;
+        /* background: rgba(88, 88, 86, 1); */
+        flex-direction: row;
+        gap: 0.5em;
+        position: relative;
+    }
+
+    .footer-more-p {
+        font-size: 1.2em;
+        color: rgba(40, 146, 245, 1);
+        font-weight: 500;
+        /* cursor: pointer; */
+        /* position: relative; */
+    }
+
+
+
+    /* HOVER */
+    .hover-tooltip-list-user-collocataire {
+        background: rgba(54, 54, 54, 0.9);
+        color: #fff;
+        padding: 0.2em;
+        border-radius: 0.2em;
+        position: absolute;
+        bottom: 0;
+        left: 1.7em;
+        margin-bottom: 3.5em;
+        display: none;
+    }
+
+    .hover-tooltip-list-user-collocataire::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 1.2em;
+        margin-bottom: -1.4em;
+        /* transform: translateX(-50%); */
+        border-width: 10px;
+        border-style: solid;
+        border-color: rgba(54, 54, 54, 0.9) transparent transparent transparent;
+    }
+
+    .ul-pop-hover-collocataire {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2em;
+        list-style-type: none;
+    }
+
+    .div-list-hover-user-collocataire {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+        flex-direction: row;
+        font-family: 'roboto';
+        padding: 0.5em 0.8em;
+        padding-right: 4em;
+    }
+
+    .div-list-hover-user-collocataire:hover {
+        background: rgba(54, 54, 54, 0.2);
+    }
+
+    .user-name-hover-collocataire {
+        font-size: 1em;
+    }
+
+    .user-profile-hover-collocataire {
+        width: 1.8em;
+        height: 1.8em;
+        border-radius: 50%;
+        object-fit: contain;
+    }
+
+    .user-name-hover-collocataire strong {
+        font-weight: 800;
+    }
+
+    .span-user-name-hover-collocataire {
+        /* font-size: 1.2em; */
+        /* color: rgba(88, 88, 86, 1); */
+        font-weight: 500;
+        font-size: 0.9em;
+    }
+</style>
+
+<body>
+    <div>
+        <main>
+            <div class="section-pop-collocataire">
+
+                <div class="col-pop-collocataire">
+
+                    <!-- Head -->
+                    <div class="header-pop-collocataire">
+                        <picture>
+                            <h3 class="title-pop-collocataire">Colocataires</h3>
+                        </picture>
+                        <picture class="row-pic-pop-collocataire">
+                            <i>
+                                <svg width="35" height="35" viewBox="0 0 17 23" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M2.5 0C3.42047 0 4.16667 0.839473 4.16667 1.875C4.16667 2.91053 3.42047 3.75 2.5 3.75C1.57953 3.75 0.833333 2.91053 0.833333 1.875C0.833333 0.839473 1.57953 0 2.5 0ZM3.75 4.21875H3.45417C2.86273 4.5247 2.16276 4.53791 1.54583 4.21875H1.25C0.559635 4.21875 0 4.84834 0 5.625V9.60938C0 9.99771 0.279818 10.3125 0.625 10.3125H1.04167V14.2969C1.04167 14.6852 1.32148 15 1.66667 15H3.33333C3.67852 15 3.95833 14.6852 3.95833 14.2969V10.3125H4.375C4.72018 10.3125 5 9.99771 5 9.60938V5.625C5 4.84834 4.44036 4.21875 3.75 4.21875Z"
+                                        fill="#585856" />
+                                    <path
+                                        d="M13.5 0C14.5308 0 15.3665 0.839473 15.3665 1.875C15.3665 2.91053 14.5308 3.75 13.5 3.75C12.4692 3.75 11.6335 2.91053 11.6335 1.875C11.6335 0.839473 12.4692 0 13.5 0ZM16.9788 10.3763L15.5789 4.75134C15.541 4.59922 15.4536 4.46417 15.3306 4.36767C15.2076 4.27117 15.056 4.21875 14.8999 4.21875H14.5686C13.9062 4.5247 13.1223 4.53791 12.4314 4.21875H12.1001C11.944 4.21875 11.7924 4.27117 11.6694 4.36767C11.5463 4.46417 11.4589 4.59922 11.4211 4.75134L10.0212 10.3763C9.91091 10.8195 10.2448 11.25 10.7002 11.25H12.3334V14.2969C12.3334 14.6852 12.6468 15 13.0334 15H13.9666C14.3532 15 14.6666 14.6852 14.6666 14.2969V11.25H16.2997C16.7544 11.25 17.0892 10.8202 16.9788 10.3763Z"
+                                        fill="#585856" />
+                                    <path
+                                        d="M2.8857 17.694C2.7977 17.25 2.5237 17.028 2.0637 17.028C1.7077 17.028 1.4417 17.166 1.2657 17.442C1.0897 17.714 1.0037 18.164 1.0077 18.792C1.0997 18.584 1.2517 18.422 1.4637 18.306C1.6797 18.186 1.9197 18.126 2.1837 18.126C2.5957 18.126 2.9237 18.254 3.1677 18.51C3.4157 18.766 3.5397 19.12 3.5397 19.572C3.5397 19.844 3.4857 20.088 3.3777 20.304C3.2737 20.52 3.1137 20.692 2.8977 20.82C2.6857 20.948 2.4277 21.012 2.1237 21.012C1.7117 21.012 1.3897 20.92 1.1577 20.736C0.925703 20.552 0.763703 20.298 0.671703 19.974C0.579703 19.65 0.533703 19.25 0.533703 18.774C0.533703 17.306 1.0457 16.572 2.0697 16.572C2.4617 16.572 2.7697 16.678 2.9937 16.89C3.2177 17.102 3.3497 17.37 3.3897 17.694H2.8857ZM2.0697 18.588C1.8977 18.588 1.7357 18.624 1.5837 18.696C1.4317 18.764 1.3077 18.87 1.2117 19.014C1.1197 19.154 1.0737 19.326 1.0737 19.53C1.0737 19.834 1.1617 20.082 1.3377 20.274C1.5137 20.462 1.7657 20.556 2.0937 20.556C2.3737 20.556 2.5957 20.47 2.7597 20.298C2.9277 20.122 3.0117 19.886 3.0117 19.59C3.0117 19.278 2.9317 19.034 2.7717 18.858C2.6117 18.678 2.3777 18.588 2.0697 18.588Z"
+                                        fill="#363636" />
+                                    <path
+                                        d="M11.3533 20.034V19.62L13.4593 16.704H14.1133V19.56H14.7133V20.034H14.1133V21H13.5733V20.034H11.3533ZM13.5973 17.274L11.9833 19.56H13.5973V17.274Z"
+                                        fill="#363636" />
+                                </svg>
+                            </i>
+                            <i>
+                                <svg width="28" height="30" viewBox="0 0 20 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="20" height="21" rx="2" fill="#4B8FCC" />
+                                    <path
+                                        d="M4.15408 8.148V6.24H7.47808V15H5.34208V8.148H4.15408ZM8.8818 10.5C8.8818 9.124 9.1458 8.04 9.6738 7.248C10.2098 6.456 11.0698 6.06 12.2538 6.06C13.4378 6.06 14.2938 6.456 14.8218 7.248C15.3578 8.04 15.6258 9.124 15.6258 10.5C15.6258 11.892 15.3578 12.984 14.8218 13.776C14.2938 14.568 13.4378 14.964 12.2538 14.964C11.0698 14.964 10.2098 14.568 9.6738 13.776C9.1458 12.984 8.8818 11.892 8.8818 10.5ZM13.6098 10.5C13.6098 9.692 13.5218 9.072 13.3458 8.64C13.1698 8.2 12.8058 7.98 12.2538 7.98C11.7018 7.98 11.3378 8.2 11.1618 8.64C10.9858 9.072 10.8978 9.692 10.8978 10.5C10.8978 11.044 10.9298 11.496 10.9938 11.856C11.0578 12.208 11.1858 12.496 11.3778 12.72C11.5778 12.936 11.8698 13.044 12.2538 13.044C12.6378 13.044 12.9258 12.936 13.1178 12.72C13.3178 12.496 13.4498 12.208 13.5138 11.856C13.5778 11.496 13.6098 11.044 13.6098 10.5Z"
+                                        fill="white" />
+                                </svg>
+
+                            </i>
+                        </picture>
+                    </div>
+
+                    <!-- Main -->
+                    <div class="main-pop-collocataire">
+                        <picture>
+                            <ul class="ul-pop-collocataire">
+                                <li>
+                                    <div class="div-list-user-collocataire">
+                                        <img src="user-profile.png" alt="" class="user-profile-collocataire">
+
+                                        <p class="user-name-collocataire">
+                                            <strong>Julie (22 ans) :</strong> <span
+                                                class="span-user-name-collocataire">étudiante en droit</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-user-collocataire">
+                                        <img src="2.png" alt="" class="user-profile-collocataire">
+
+                                        <p class="user-name-collocataire">
+                                            <strong>Marc (30 ans) :</strong> <span
+                                                class="span-user-name-collocataire">Développeur web</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-user-collocataire">
+                                        <img src="3.png" alt="" class="user-profile-collocataire">
+
+                                        <p class="user-name-collocataire">
+                                            <strong>Karim (45 ans) :</strong> <span
+                                                class="span-user-name-collocataire">Photographe</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-user-collocataire">
+                                        <img src="4.png" alt="" class="user-profile-collocataire">
+
+                                        <p class="user-name-collocataire">
+                                            <strong>Sophie (32 ans) :</strong> <span
+                                                class="span-user-name-collocataire">Architecte</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-user-collocataire">
+                                        <img src="5.png" alt="" class="user-profile-collocataire">
+
+                                        <p class="user-name-collocataire">
+                                            <strong>Thomas (30 ans) :</strong> <span
+                                                class="span-user-name-collocataire">Ingénieur en BTP</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-user-collocataire">
+                                        <img src="6.png" alt="" class="user-profile-collocataire">
+
+                                        <p class="user-name-collocataire">
+                                            <strong>William (25 ans) :</strong> <span
+                                                class="span-user-name-collocataire">étudiant en sciences</span>
+                                        </p>
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </picture>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="footer-pop-collocataire">
+                        <!-- More -->
+                        <picture>
+                            <p class="footer-more-p" id="hover-footer-p-collocataire"><span>+4</span>&nbsp;autres...</p>
+                        </picture>
+
+                        <div class="hover-tooltip-list-user-collocataire" id="tooltip-hover-collocataire">
+                            <ul class="ul-pop-hover-collocataire">
+                                <li>
+                                    <div class="div-list-hover-user-collocataire">
+                                        <img src="hover1.png" alt="" class="user-profile-hover-collocataire">
+
+                                        <p class="user-name-hover-collocataire">
+                                            <strong>Julie (22 ans) :</strong> <span
+                                                class="span-user-name-hover-collocataire">étudiante en droit</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-hover-user-collocataire">
+                                        <img src="hover2.png" alt="" class="user-profile-hover-collocataire">
+
+                                        <p class="user-name-hover-collocataire">
+                                            <strong>Marc (30 ans) :</strong> <span
+                                                class="span-user-name-hover-collocataire">Développeur web</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-hover-user-collocataire">
+                                        <img src="hover1.png" alt="" class="user-profile-hover-collocataire">
+
+                                        <p class="user-name-hover-collocataire">
+                                            <strong>Karim (45 ans) :</strong> <span
+                                                class="span-user-name-hover-collocataire">Photographe</span>
+                                        </p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="div-list-hover-user-collocataire">
+                                        <img src="hover2.png" alt="" class="user-profile-hover-collocataire">
+
+                                        <p class="user-name-hover-collocataire">
+                                            <strong>Sophie (32 ans) :</strong> <span
+                                                class="span-user-name-hover-collocataire">Architecte</span>
+                                        </p>
+                                    </div>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    
+</body>
+
+</html>
