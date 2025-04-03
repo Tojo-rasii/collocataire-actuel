@@ -451,7 +451,37 @@
         </main>
     </div>
 
+    <script>
+            const sectionPop = document.querySelector(".section-pop-collocataire");
+                const trigger = document.getElementById("hover-footer-p-collocataire");
+            const tooltip = document.getElementById("tooltip-hover-collocataire");
+            let hideTimeout;
     
+            trigger.addEventListener("mouseenter", () => {
+                clearTimeout(hideTimeout);
+                tooltip.style.display = "block";
+            });
+    
+            trigger.addEventListener("mouseleave", () => {
+                hideTimeout = setTimeout(() => {
+                    tooltip.style.display = "none";
+                }, 100);
+            });
+    
+            tooltip.addEventListener("mouseenter", () => {
+                clearTimeout(hideTimeout); // Empêche la disparition si on survole le tooltip
+            });
+    
+            tooltip.addEventListener("mouseleave", () => {
+                hideTimeout = setTimeout(() => {
+                    tooltip.style.display = "none";
+                }, 300);
+            });
+    
+    
+    
+    
+        </script> 
 </body>
 
 </html>
